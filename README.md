@@ -1,85 +1,85 @@
 <div align="center">
 
-# Hey, I'm Kashif Hussain 👋
+# Kashif Hussain
 
-### Computer Science Student • Aspiring AI/ML Engineer
-
-I build practical software, learn by shipping projects, and bring a creative background in **motion design & video editing** to the way I think about products and user experience.
-
-[![Portfolio](https://img.shields.io/badge/Creative%20Portfolio-111111?style=for-the-badge&logo=framer&logoColor=white)](https://kashifhussa1n.framer.website/)
-
-</div>
-
----
-
-## 🚀 What I'm focused on
-
-- Learning **Python, data analysis, machine learning, and computer vision**
-- Building real projects instead of just following tutorials
-- Improving my fundamentals in **DSA, OOP, problem solving, and software engineering**
-- Exploring how AI can be turned into useful products
-
-## 🧠 Current AI/ML journey
-
-I'm currently progressing from Python and data work into practical AI/ML development.
-
-**Learning:** Python • NumPy • Pandas • OpenCV • ML fundamentals
-
-**Next:** scikit-learn • model evaluation • deeper computer vision • PyTorch
-
-## 🛠 Tech stack
+<img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&duration=2500&pause=800&color=7C9DFF&center=true&vCenter=true&width=760&lines=Computer+Science+Student;Aspiring+AI%2FML+Engineer;Python+%E2%80%A2+Computer+Vision+%E2%80%A2+Machine+Learning;Motion+Designer+%26+Video+Editor" alt="Typing SVG" />
 
 <p>
-  <img src="https://skillicons.dev/icons?i=python,java,git,github,vscode,html,css,js" />
+  Building practical software while moving deeper into AI/ML.<br/>
+  I also bring a background in motion design and video editing.
 </p>
 
-Also working with: **NumPy • Pandas • OpenCV • FastAPI • SQLAlchemy**
-
-## 🔥 Featured work
-
-### 🤖 AttendAI
-AI-assisted classroom attendance system using **OpenCV YuNet face detection + SFace embeddings**, course-scoped matching, conservative UNKNOWN handling, and teacher review before confirmation.
-
-> Full project coming to GitHub soon.
-
-### 🎯 CS2 Tradeup Bot
-A Python project that searches for promising CS2 trade-up opportunities and evaluates profitability.
-
-[View repository](https://github.com/kashifhussa1n/cs2-tradeup-bot)
-
-### 🏦 Java Console Banking System
-A Java project built to practice OOP, structure, and core programming fundamentals.
-
-[View repository](https://github.com/kashifhussa1n/java-console-banking-system)
-
-## 🎨 Creative side
-
-Before going deeper into AI/ML, I built experience in **video editing and motion design**.
-
-That creative background still matters to how I build software: I care about clarity, polish, visual hierarchy, and making products feel good to use.
-
-[View my motion design & video editing portfolio](https://kashifhussa1n.framer.website/)
-
-## 📊 GitHub stats
-
-<div align="center">
-
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=kashifhussa1n&show_icons=true&hide_border=true&rank_icon=github&theme=transparent" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=kashifhussa1n&layout=compact&hide_border=true&theme=transparent" />
+<a href="https://kashifhussa1n.framer.website/">
+  <img src="https://img.shields.io/badge/Creative_Portfolio-0D1117?style=for-the-badge&logo=framer&logoColor=7C9DFF&labelColor=0D1117" />
+</a>
 
 </div>
 
-## 🌱 Right now
+---
 
-- Building my AI/ML foundation
-- Working on practical Python projects
-- Learning through Kaggle and hands-on exercises
-- Turning class projects into cleaner, portfolio-worthy software
+## About me
+
+- 🎓 Computer Science student
+- 🤖 Focused on AI/ML, Python, data, and computer vision
+- 🧠 Learning by building real projects
+- 🎨 Motion designer + video editor
+- 📍 Currently strengthening ML foundations and software engineering skills
+
+## Tech
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=python,java,git,github,vscode,html,css,js&theme=dark" />
+
+<br/><br/>
+
+**NumPy • Pandas • OpenCV • FastAPI • SQLAlchemy**
+
+</div>
+
+## Featured projects
+
+### 🤖 AttendAI
+AI-assisted classroom attendance using **YuNet face detection + SFace embeddings**, conservative UNKNOWN handling, course-scoped matching, and teacher confirmation.
+
+> Coming to GitHub soon.
+
+### 🎯 [CS2 Tradeup Bot](https://github.com/kashifhussa1n/cs2-tradeup-bot)
+Python project for finding and evaluating potentially profitable CS2 trade-up opportunities.
+
+### 🏦 [Java Console Banking System](https://github.com/kashifhussa1n/java-console-banking-system)
+Java project focused on OOP, structure, and core programming fundamentals.
+
+## Currently learning
+
+```text
+Python → NumPy → Pandas → Machine Learning → Computer Vision → PyTorch
+```
+
+## GitHub activity
+
+<div align="center">
+
+<img width="49%" src="https://github-readme-stats.vercel.app/api?username=kashifhussa1n&show_icons=true&hide_border=true&bg_color=0D1117&title_color=7C9DFF&text_color=C9D1D9&icon_color=7C9DFF&ring_color=7C9DFF" />
+<img width="49%" src="https://github-readme-streak-stats.herokuapp.com?user=kashifhussa1n&hide_border=true&background=0D1117&ring=7C9DFF&fire=A78BFA&currStreakLabel=7C9DFF&sideLabels=C9D1D9&currStreakNum=FFFFFF&sideNums=FFFFFF&dates=8B949E" />
+
+<br/>
+
+<img width="98%" src="https://github-readme-activity-graph.vercel.app/graph?username=kashifhussa1n&bg_color=0D1117&color=C9D1D9&line=7C9DFF&point=A78BFA&area=true&hide_border=true" />
+
+</div>
+
+## Creative side
+
+My creative background is in **motion design and video editing**.  
+That influences how I approach software too: clean visuals, good hierarchy, and polished user experience.
+
+**[View my creative portfolio →](https://kashifhussa1n.framer.website/)**
 
 ---
 
 <div align="center">
 
-### Build. Learn. Improve. Repeat.
+### Building. Learning. Shipping.
 
 </div>
