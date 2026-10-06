@@ -2,11 +2,10 @@
 
 # Kashif Hussain
 
-<img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&duration=2500&pause=800&color=7C9DFF&center=true&vCenter=true&width=760&lines=Computer+Science+Student;Aspiring+AI%2FML+Engineer;Python+%E2%80%A2+Computer+Vision+%E2%80%A2+Machine+Learning;Motion+Designer+%26+Video+Editor" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&duration=2500&pause=800&color=7C9DFF&center=true&vCenter=true&width=760&lines=Computer+Science+Student;Learning+Python+%26+Java;Exploring+AI%2C+ML+%26+Computer+Vision;Motion+Designer+%26+Video+Editor" alt="Typing SVG" />
 
 <p>
-  Building practical software while moving deeper into AI/ML.<br/>
-  I also bring a background in motion design and video editing.
+  CS student building projects, learning AI/ML, and bringing a motion-design mindset into software.
 </p>
 
 <a href="https://kashifhussa1n.framer.website/">
@@ -19,23 +18,19 @@
 
 ## About me
 
-- 🎓 Computer Science student
-- 🤖 Focused on AI/ML, Python, data, and computer vision
-- 🧠 Learning by building real projects
-- 🎨 Motion designer + video editor
-- 📍 Currently strengthening ML foundations and software engineering skills
+🎓 **Computer Science student**  
+🐍 Learning **Python**, data, and machine learning  
+☕ Building stronger **Java / OOP** fundamentals  
+🎨 **Motion designer + video editor**  
+🧠 I learn best by building real projects
 
 ## Tech
 
-<div align="center">
+<img align="left" src="https://skillicons.dev/icons?i=python,java,git,github,vscode,html,css,js&theme=dark" />
 
-<img src="https://skillicons.dev/icons?i=python,java,git,github,vscode,html,css,js&theme=dark" />
-
-<br/><br/>
+<br clear="left"/>
 
 **NumPy • Pandas • OpenCV • FastAPI • SQLAlchemy**
-
-</div>
 
 ## Featured projects
 
@@ -71,8 +66,7 @@ Python → NumPy → Pandas → Machine Learning → Computer Vision → PyTorch
 
 ## Creative side
 
-My creative background is in **motion design and video editing**.  
-That influences how I approach software too: clean visuals, good hierarchy, and polished user experience.
+My background in **motion design and video editing** shapes how I think about interfaces, hierarchy, polish, and presentation.
 
 **[View my creative portfolio →](https://kashifhussa1n.framer.website/)**
 
