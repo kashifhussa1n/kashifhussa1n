@@ -8,7 +8,7 @@ All contribution data and statistics belong to `kashifhussa1n`.
 
 ## Rotating ASCII gallery
 
-`ascii-objects.svg` contains sixteen depth-shaded sculptures: trefoil knot,
+`ascii-motion.svg` contains sixteen depth-shaded sculptures: trefoil knot,
 Mobius strip, gyroscope, double helix, icosahedron, hex crystal, spacecraft,
 gear, wave field, nested cubes, orbital atom, torus, octahedron, cube,
 sphere and pyramid. Geometry is projected in 3D, depth-shaded with ASCII

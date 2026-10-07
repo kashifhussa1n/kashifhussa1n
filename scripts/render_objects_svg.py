@@ -151,7 +151,7 @@ def main():
             out += ['</g>']
         out += ['</g></g>']
     out += ['</g></svg>']
-    path=ROOT/'ascii-objects.svg'; path.write_text(''.join(out),encoding='utf-8')
+    path=ROOT/'ascii-motion.svg'; path.write_text(''.join(out),encoding='utf-8')
     print(f'{len(objects)} objects; {total} perspective frames; {duration:g}s loop; {path.stat().st_size:,} bytes')
 
 if __name__ == '__main__': main()
