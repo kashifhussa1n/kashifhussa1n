@@ -2,7 +2,7 @@
 
 <h3><code>kashif@github ~ $ ./contributions.sh</code></h3>
 
-<img src="./contrib-heatmap.svg" width="860" alt="Kashif's GitHub contribution graph" />
+<img src="./contrib-heatmap.svg?v=20261007-rebuild" width="860" alt="Kashif's GitHub contribution graph" />
 
 <br>
 <br>
@@ -11,8 +11,8 @@
 
 <table>
 <tr>
-<td valign="top"><img src="./kashif-ascii.svg" width="420" alt="Kashif Hussain — ASCII portrait" /></td>
-<td valign="top"><img src="./stats.svg" width="420" alt="Kashif's GitHub contribution stats" /></td>
+<td valign="top"><img src="./kashif-ascii.svg?v=20261007-rebuild" width="420" alt="Kashif Hussain — ASCII portrait" /></td>
+<td valign="top"><img src="./stats.svg?v=20261007-rebuild" width="420" alt="Kashif's GitHub contribution stats" /></td>
 </tr>
 </table>
 
