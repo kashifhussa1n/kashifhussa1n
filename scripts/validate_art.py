@@ -31,19 +31,24 @@ def validate(root=ROOT):
     expected = [str(data['current_streak']['length']),str(data['longest_streak']['length']),f'{data["total_contributions"]:,}',str(data['active_days']),str(data['best_day']['count']),f'{data["avg_per_active_day"]:.1f}']
     assert final == expected, f'Stats mismatch: {final} vs {expected}'
     gallery = docs['ascii-objects.svg']
-    frames = [g for g in gallery.iter(SVG+'g') if g.attrib.get('class') == 'frame']
-    assert len(frames) == 128, 'Missing rotation frames'
+    frames = [g for g in gallery.iter(SVG+'g') if 'frame' in g.attrib.get('class','').split()]
+    assert len(frames) == 256, 'Missing rotation frames'
     assert {int(g.attrib['data-object']) for g in frames} == set(range(16))
-    assert [g.attrib['id'] for g in frames] == [f'frame-{i}' for i in range(128)]
+    assert [g.attrib['id'] for g in frames] == [f'frame-{i}' for i in range(256)]
+    objects = [g for g in gallery.iter(SVG+'g') if g.attrib.get('class') == 'object']
+    assert len(objects) == 16
+    for obj in objects:
+        assert len([t for t in obj.iter(SVG+'text') if t.attrib.get('class') == 'phase']) == 3
     for frame in frames:
-        rows = list(frame.iter(SVG+'tspan'))
+        rows = list(frame.iter(SVG+'text'))
         assert len(rows) >= 10, 'Empty sculpture'
-        assert all(row.text and set(row.text) <= set(' .:+*#') for row in rows)
-        assert all(float(row.attrib['x']) >= 32 for row in rows)
-        assert sum(float(row.attrib['dy']) for row in rows) <= 44*13
+        assert all(row.text and set(row.text) <= set(' .,:;+=*#%@') for row in rows)
+        assert all(32 <= float(row.attrib['x']) and float(row.attrib['x'])+len(row.text)*9.6 <= 808 for row in rows)
+        assert all(194 <= float(row.attrib['y']) <= 746 for row in rows)
+        assert all(row.tag == SVG+'text' for row in rows)
     style = gallery.find(SVG+'style').text
-    assert 'infinite' in style and 'prefers-reduced-motion' in style and '#frame-0' in style
-    print('Verified: equal 840 x 880 panels; calendar and 6 stats agree; 16 sculptures / 128 ASCII rotation frames')
+    assert all(s in style for s in ('infinite','prefers-reduced-motion','#frame-0','@keyframes assemble','@keyframes building','@keyframes dissolving'))
+    print('Verified: matching panels; real calendar and 6 stats; 16 sculptures / 256 shaded views; build and dissolve phases')
 
 if __name__ == '__main__':
     validate()
