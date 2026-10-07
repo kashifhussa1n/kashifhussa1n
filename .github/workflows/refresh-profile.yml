@@ -1,29 +1,41 @@
 name: Refresh profile artwork
-on:
+
+"on":
   workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * *"
   push:
     branches: [main]
     paths:
-      - "scripts/refresh_profile.py"
+      - "scripts/**"
       - ".github/workflows/refresh-profile.yml"
-  schedule:
-    - cron: "17 2 * * *"
+
 permissions:
   contents: write
+
+concurrency:
+  group: profile-art-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_PROFILE_USER: kashifhussa1n
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Render live contribution artwork
+      - name: Fetch, render and verify real contribution artwork
         run: python scripts/refresh_profile.py
-      - name: Commit refreshed SVGs
+      - name: Commit verified calendar and panels
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add contrib-heatmap.svg stats.svg
-          git diff --cached --quiet || git commit -m "chore: refresh profile artwork [skip ci]"
-          git push
+          git add data/contributions.json contrib-heatmap.svg stats.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: refresh real profile artwork [skip ci]"
+            git push
+          fi
