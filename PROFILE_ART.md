@@ -6,7 +6,25 @@ The terminal layout and portrait/stats renderers are adapted from
 and his [tutorial](https://www.avivashishta.com/blog/build-animated-github-profile-readme).
 All contribution data and statistics belong to `kashifhussa1n`.
 
-## Portrait
+## Rotating ASCII gallery
+
+`ascii-objects.svg` contains sixteen wireframe sculptures: trefoil knot,
+Mobius strip, gyroscope, double helix, icosahedron, hex crystal, spacecraft,
+gear, wave field, nested cubes, orbital atom, torus, octahedron, cube,
+sphere and pyramid. Geometry is projected in 3D, depth-shaded with ASCII
+characters, and rendered into eight views per object. Each object stays
+for 4.8 seconds; the full 76.8-second sequence repeats indefinitely.
+
+The panel is 840 x 880 pixels, matching the contribution stats. Its CSS
+animation runs inside a self-contained SVG image with no JavaScript,
+external fonts, services or runtime dependencies. Reduced-motion viewers
+see a static first sculpture. Generate it using the Python standard library:
+
+```sh
+python scripts/render_objects_svg.py
+```
+
+## Archived portrait
 
 `source-photo.jpg` is Kashif's supplied Memoji. Its white background allows
 deterministic isolation without a downloaded background-removal model.
@@ -50,6 +68,7 @@ python scripts/refresh_profile.py
 ```
 
 `validate_art.py` checks dimensions, identity, all calendar cells, final stat
-values and the portrait grid before the workflow commits anything. Failed
+values and all 128 gallery frames before the workflow commits anything. Failed
 retrieval or verification leaves the last committed assets in place.
-The portrait is regenerated only when its source changes, not daily.
+The object gallery is regenerated when its renderer changes, not daily.
+The original portrait assets remain available for a future switch back.

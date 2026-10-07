@@ -13,14 +13,14 @@ def validate(root=ROOT):
     assert data['active_days'] == sum(d['count'] > 0 for d in data['days'])
     assert data['total_contributions'] == sum(m['total'] for m in data['monthly'])
     docs = {}
-    for name in ['kashif-ascii.svg','contrib-heatmap.svg','stats.svg']:
+    for name in ['ascii-objects.svg','contrib-heatmap.svg','stats.svg']:
         source = (root/name).read_text(encoding='utf-8')
         assert 'AVIVASHISHTA29' not in source and 'avi@github' not in source and 'Avi Vashishta' not in source
         doc = ET.fromstring(source)
         assert doc.tag == SVG+'svg'
         assert not doc.findall('.//'+SVG+'script')
         docs[name] = doc
-    for name in ['kashif-ascii.svg','stats.svg']:
+    for name in ['ascii-objects.svg','stats.svg']:
         doc = docs[name]
         assert float(doc.attrib['width']) == 840 and float(doc.attrib['height']) == 880
         assert list(map(float,doc.attrib['viewBox'].split())) == [0,0,840,880]
@@ -30,10 +30,20 @@ def validate(root=ROOT):
     final = [t.text for t in docs['stats.svg'].iter(SVG+'text') if t.attrib.get('class') == 'count-final']
     expected = [str(data['current_streak']['length']),str(data['longest_streak']['length']),f'{data["total_contributions"]:,}',str(data['active_days']),str(data['best_day']['count']),f'{data["avg_per_active_day"]:.1f}']
     assert final == expected, f'Stats mismatch: {final} vs {expected}'
-    rows = [g.find(SVG+'text').text for g in docs['kashif-ascii.svg'].iter(SVG+'g') if g.attrib.get('class') == 'portrait-row']
-    assert len(rows) == 96 and all(len(row) == 180 for row in rows), 'Malformed portrait grid'
-    assert any('@' in row for row in rows) and any(' ' in row for row in rows)
-    print('Verified: 3 valid SVGs; equal 840 x 880 panels; all calendar dates/counts and 6 stats agree; 180 x 96 image-derived portrait')
+    gallery = docs['ascii-objects.svg']
+    frames = [g for g in gallery.iter(SVG+'g') if g.attrib.get('class') == 'frame']
+    assert len(frames) == 128, 'Missing rotation frames'
+    assert {int(g.attrib['data-object']) for g in frames} == set(range(16))
+    assert [g.attrib['id'] for g in frames] == [f'frame-{i}' for i in range(128)]
+    for frame in frames:
+        rows = list(frame.iter(SVG+'tspan'))
+        assert len(rows) >= 10, 'Empty sculpture'
+        assert all(row.text and set(row.text) <= set(' .:+*#') for row in rows)
+        assert all(float(row.attrib['x']) >= 32 for row in rows)
+        assert sum(float(row.attrib['dy']) for row in rows) <= 44*13
+    style = gallery.find(SVG+'style').text
+    assert 'infinite' in style and 'prefers-reduced-motion' in style and '#frame-0' in style
+    print('Verified: equal 840 x 880 panels; calendar and 6 stats agree; 16 sculptures / 128 ASCII rotation frames')
 
 if __name__ == '__main__':
     validate()

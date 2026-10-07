@@ -11,7 +11,7 @@
 
 <table>
 <tr>
-<td valign="top"><img src="./kashif-ascii.svg?v=20261007-rebuild" width="420" alt="Kashif Hussain — ASCII portrait" /></td>
+<td valign="top"><img src="./ascii-objects.svg?v=20261007-gallery" width="420" alt="Sixteen rotating ASCII sculptures — Kashif's geometry lab" /></td>
 <td valign="top"><img src="./stats.svg?v=20261007-rebuild" width="420" alt="Kashif's GitHub contribution stats" /></td>
 </tr>
 </table>
