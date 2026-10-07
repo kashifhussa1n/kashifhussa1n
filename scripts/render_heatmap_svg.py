@@ -16,7 +16,7 @@ def render(data):
     w,h = 34+weeks*16+6,158
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" role="img">',
              f'<title>{escape(data["username"])} — {data["total_contributions"]} real GitHub contributions</title>',
-             '<style>text.lbl{fill:#7d8590;font-size:13px;font-weight:600}text.total{fill:#e6edf3;font-size:15px;font-weight:700}.c{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .55s ease-out both}.g{animation:pop .55s ease-out both,flash .7s ease-out both}@keyframes pop{0%{opacity:0;transform:scale(.2)}60%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:scale(1)}}@keyframes flash{0%,45%{filter:brightness(2.4)}100%{filter:brightness(1)}}@media(prefers-reduced-motion:reduce){.c{opacity:1!important;animation:none!important;transform:none!important}}</style>']
+             '<style>text.lbl{fill:#7d8590;font-size:13px;font-weight:600}text.total{fill:#7d8590;font-size:15px;font-weight:700}.c{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .55s ease-out both}.g{animation:pop .55s ease-out both,flash .7s ease-out both}@keyframes pop{0%{opacity:0;transform:scale(.2)}60%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:scale(1)}}@keyframes flash{0%,45%{filter:brightness(2.4)}100%{filter:brightness(1)}}@media(prefers-reduced-motion:reduce){.c{opacity:1!important;animation:none!important;transform:none!important}}</style>']
     last_month = None
     for week in range(weeks):
         day = max(first,sunday+dt.timedelta(days=week*7))
