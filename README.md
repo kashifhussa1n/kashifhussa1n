@@ -2,7 +2,7 @@
 
 <h3><code>kashif@github ~ $ ./contributions.sh</code></h3>
 
-<img src="./contrib-heatmap.svg?v=20261007-rebuild" width="860" alt="Kashif's GitHub contribution graph" />
+<img src="https://raw.githubusercontent.com/kashifhussa1n/kashifhussa1n/ba04c6a714f255bfbe7f249d210be2b297e5acea/contrib-heatmap.svg" width="860" alt="Kashif's GitHub contribution graph" />
 
 <br>
 <br>
@@ -12,7 +12,7 @@
 <table>
 <tr>
 <td valign="top"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/cinema-poster.png" /><img src="./ascii-cinema.webp" width="420" alt="Eleven animated 3D ASCII scenes: brain, walking Steve, skull, Earth, Siuuu celebration, glasses cat, asterisk, solar system, star, eye and knot, with continuous character morphs" /></picture></td>
-<td valign="top"><img src="./stats.svg?v=20261007-rebuild" width="420" alt="Kashif's GitHub contribution stats" /></td>
+<td valign="top"><img src="https://raw.githubusercontent.com/kashifhussa1n/kashifhussa1n/ba04c6a714f255bfbe7f249d210be2b297e5acea/stats.svg" width="420" alt="Kashif's GitHub contribution stats" /></td>
 </tr>
 </table>
 
