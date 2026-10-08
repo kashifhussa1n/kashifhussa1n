@@ -389,17 +389,20 @@ class Morph:
         bend=np.stack([-delta[:,1],delta[:,0]],1)*(.10*np.sin(math.pi*s))
         xy=pa+(pb-pa)*s+bend
         rgb=a[2][self.ia]*(1-s)+b[2][self.ib]*s
+        opacity=np.ones(len(xy))
         # Each matched character crossfades its glyph while following one path.
         g=a[1][self.ia]*(1-s)+b[1][self.ib]*s
         if len(self.drop):
             p=a[0][self.drop]*(1-s)+b[0][self.drop_to]*s
             xy=np.concatenate([xy,p]); g=np.r_[g,a[1][self.drop]]
-            rgb=np.concatenate([rgb,BG+(a[2][self.drop]-BG)*(1-s)**1.7])
+            rgb=np.concatenate([rgb,a[2][self.drop]])
+            opacity=np.r_[opacity,np.full(len(self.drop),(1-s)**1.7)]
         if len(self.add):
             p=a[0][self.add_from]*(1-s)+b[0][self.add]*s
             xy=np.concatenate([xy,p]); g=np.r_[g,b[1][self.add]]
-            rgb=np.concatenate([rgb,BG+(b[2][self.add]-BG)*s**1.7])
-        return xy,g,rgb
+            rgb=np.concatenate([rgb,b[2][self.add]])
+            opacity=np.r_[opacity,np.full(len(self.add),s**1.7)]
+        return xy,g,rgb,opacity
 
 @functools.lru_cache(None)
 def glyph_mask(g):
@@ -422,14 +425,17 @@ def canvas(scene,phase,progress):
     return im
 
 def draw_cloud(im,cloud,alpha=1):
-    xy,g,colors=cloud
+    xy,g,colors=cloud[:3]
+    opacities=cloud[3] if len(cloud)==4 else np.ones(len(xy))
     # Cached glyph bitmaps avoid repeated font layout for thousands of particles.
-    for pos,gi,color in zip(xy,g,colors):
+    for pos,gi,color,opacity in zip(xy,g,colors,opacities):
+        if opacity<.002: continue
         x,y=np.rint(pos).astype(int)
         if not (8<x<W-10 and 150<y<774): continue
         lo=int(math.floor(gi)); hi=min(10,lo+1); mix=gi-lo
         mask=glyph_mask(max(1,lo))
         if mix>.025: mask=Image.blend(mask,glyph_mask(hi),float(mix))
+        if opacity<.998: mask=mask.point(lambda value: int(value*opacity))
         rgb=tuple(np.clip(BG+(color-BG)*alpha,0,255).astype(int))
         im.paste(rgb,(x,y),mask)
     return im
@@ -438,7 +444,7 @@ def stills():
     thumbs=[]
     for i,scene in enumerate(SCENES):
         t=.15 if scene[2] in ['star','asterisk','eye','cat'] else .6 if scene[2]!='ronaldo' else 3.0
-        cloud=project(model(scene[2],t,scene[3]),170 if scene[2]=='solar' else 205 if scene[2]=='ronaldo' else 225 if scene[2]=='steve' else 245)
+        cloud=project(model(scene[2],t,scene[3]),170 if scene[2]=='solar' else 190 if scene[2]=='ronaldo' else 225 if scene[2]=='steve' else 245)
         im=draw_cloud(canvas(scene,'FORM / MOTION',.5),cloud)
         im.save(OUT/(scene[2]+'-preview.png'))
         if scene[2]=='cat': im.save(OUT/'cinema-poster.png')
@@ -452,25 +458,27 @@ def palette():
     # Uniform palette shared by all frames prevents quantization flicker.
     colors=[BG]
     for base in [INK,CYAN,GOLD,(157,160,226),(99,195,173),(229,166,149)]:
-        for f in np.linspace(.08,1,40): colors.append(tuple(int(v) for v in np.array(BG)+(np.array(base)-BG)*f))
+        for f in np.linspace(.12,1,8): colors.append(tuple(int(v) for v in np.array(BG)+(np.array(base)-BG)*f))
     colors.extend([(255,95,86),(255,189,46),(39,201,63),(48,54,61),(37,48,62),MUTED])
     colors=(colors+[BG]*256)[:256]
     p=Image.new('P',(1,1));p.putpalette([v for c in colors for v in c]);return p
 
 def render():
-    manifest={'fps':FPS,'width':W,'height':H,'scenes':[],'transitions':[]}
+    manifest={'fps':FPS,'width':420,'height':440,'render_width':W,'render_height':H,'scenes':[],'transitions':[]}
     fullpath=ROOT/'ascii-cinema.webp'; started=time.time(); frameidx=0
     # Pillow's streaming libwebp binding avoids retaining 1,890 raw RGB frames.
-    encoder=_webp.WebPAnimEncoder((W,H),0xff0d1117,0,True,9,17,False,False)
+    encoder=_webp.WebPAnimEncoder((420,440),0xff0d1117,0,True,9,17,False,False)
+    pal=palette()
     def emit(im):
         nonlocal frameidx
-        encoder.add(im.convert('RGBA').getim(),frameidx*40,False,82,100,3)
+        im=im.resize((420,440),Image.Resampling.LANCZOS).quantize(palette=pal,dither=Image.Dither.NONE).convert('RGBA')
+        encoder.add(im.getim(),frameidx*40,True,70,100,3)
         frameidx+=1
     clouds=[]
     for i,scene in enumerate(SCENES):
         n=round(scene[3]*FPS)
         print('Rendering',scene[2],n,'frames',flush=True)
-        cloudlist=[project(model(scene[2],k/FPS,scene[3]),170 if scene[2]=='solar' else 205 if scene[2]=='ronaldo' else 225 if scene[2]=='steve' else 245) for k in range(n+1)]
+        cloudlist=[project(model(scene[2],k/FPS,scene[3]),170 if scene[2]=='solar' else 190 if scene[2]=='ronaldo' else 225 if scene[2]=='steve' else 245) for k in range(n+1)]
         clouds.append(cloudlist)
     # Particle assembly is the opening; final transition returns directly to it.
     first=clouds[0][0]; rng=np.random.default_rng(7)
@@ -496,7 +504,7 @@ def render():
             emit(frame)
         manifest['transitions'].append({'from':scene[2],'to':SCENES[j][2],'start':start,'frames':50,'matched':len(morph.ia),'added':len(morph.add),'retired':len(morph.drop)})
         print('Encoded',scene[2],frameidx,'frames',flush=True)
-    encoder.add(None,frameidx*40,False,82,100,0)
+    encoder.add(None,frameidx*40,True,70,100,0)
     fullpath.write_bytes(encoder.assemble('','',''))
     manifest.update(frames=frameidx,duration=frameidx/FPS,bytes=fullpath.stat().st_size)
     (OUT/'animation-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

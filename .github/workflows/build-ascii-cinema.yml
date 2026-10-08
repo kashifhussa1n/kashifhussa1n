@@ -33,6 +33,7 @@ jobs:
       - name: Verify typeface and render all scenes
         run: |
           python scripts/prepare_scene_assets.py
+          python scripts/test_scenes.py
           python scripts/render_scenes.py --stills
           python scripts/render_scenes.py
           python scripts/check_animation.py
