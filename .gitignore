@@ -1,7 +1,3 @@
 __pycache__/
 *.py[cod]
-.venv/
-assets/*-mesh.npz
-assets/*-preview.png
-assets/JetBrainsMono-Regular.ttf
-ascii-cinema.gif
+

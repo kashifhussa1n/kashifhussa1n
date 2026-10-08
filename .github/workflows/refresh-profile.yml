@@ -1,4 +1,4 @@
-name: Refresh profile artwork
+name: Refresh contribution skyline
 
 "on":
   workflow_dispatch:
@@ -14,33 +14,34 @@ permissions:
   contents: write
 
 concurrency:
-  group: profile-art-${{ github.ref }}
+  group: contribution-skyline
   cancel-in-progress: false
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    env:
-      GH_PROFILE_USER: kashifhussa1n
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Fetch, render and verify real contribution artwork
-        run: python scripts/refresh_profile.py
-      - name: Commit verified calendar and panels
+      - name: Fetch verified calendar and render skyline
+        run: |
+          python scripts/fetch_contributions.py
+          python scripts/render_skyline.py
+      - name: Publish fresh animation
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/contributions.json contrib-heatmap.svg stats.svg
+          git add data/contributions.json contribution-skyline.svg contribution-skyline-static.svg
           if ! git diff --cached --quiet; then
-            git commit -m "chore: refresh real profile artwork [skip ci]"
+            git commit -m "chore: refresh contribution skyline [skip ci]"
           fi
           python scripts/pin_readme_art.py
           git add README.md
           if ! git diff --cached --quiet; then
-            git commit -m "chore: pin fresh contribution images [skip ci]"
+            git commit -m "chore: pin latest skyline [skip ci]"
           fi
           git push
+
