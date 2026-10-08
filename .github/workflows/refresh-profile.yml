@@ -30,6 +30,7 @@ jobs:
         run: |
           python scripts/fetch_contributions.py
           python scripts/render_skyline.py
+          python scripts/test_skyline.py
       - name: Publish fresh animation
         run: |
           git config user.name "github-actions[bot]"

@@ -20,7 +20,7 @@ def pose(t):
 
 def matrix(t):
     lift,yaw,tilt = pose(t)
-    return (math.cos(yaw),math.sin(yaw)*math.sin(tilt),-math.sin(yaw),math.cos(yaw)*math.sin(tilt),430,163+lift*96)
+    return (math.cos(yaw),math.sin(yaw)*math.sin(tilt),-math.sin(yaw),math.cos(yaw)*math.sin(tilt),430,163+lift*108)
 
 def project(x,y,z,t):
     a,b,c,d,e,f = matrix(t)
@@ -31,7 +31,7 @@ def geometry(index,count,maximum,t,nweeks):
     pitch = 730/nweeks
     x,y = (col-nweeks/2)*pitch, (row-3.5)*pitch
     side = pitch-2.7
-    height = (10+90*count/maximum)*pose(t)[0] if count else 0
+    height = 85*count/maximum*pose(t)[0] if count else 0
     corners = [(x,y),(x+side,y),(x+side,y+side),(x,y+side)]
     base = [project(a,b,0,t) for a,b in corners]
     top = [project(a,b,height,t) for a,b in corners]
@@ -127,4 +127,5 @@ def main():
     print(f'Built skyline: {data["total_contributions"]} contributions; {len(data["days"])} days; seamless 18-second loop')
 
 if __name__=='__main__': main()
+
 
