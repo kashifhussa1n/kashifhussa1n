@@ -11,7 +11,7 @@
 
 <table>
 <tr>
-<td valign="top"><img src="./ascii-motion.svg?v=20261007-gallery-depth" width="420" alt="Sixteen shaded ASCII sculptures with build, rotate and dissolve transitions — Kashif's geometry lab" /></td>
+<td valign="top"><picture><source media="(prefers-reduced-motion: reduce)" srcset="./assets/cinema-poster.png" /><img src="./ascii-cinema.webp" width="420" alt="Eleven animated 3D ASCII scenes: brain, walking Steve, skull, Earth, Siuuu celebration, glasses cat, asterisk, solar system, star, eye and knot, with continuous character morphs" /></picture></td>
 <td valign="top"><img src="./stats.svg?v=20261007-rebuild" width="420" alt="Kashif's GitHub contribution stats" /></td>
 </tr>
 </table>

@@ -37,5 +37,10 @@ jobs:
           git add data/contributions.json contrib-heatmap.svg stats.svg
           if ! git diff --cached --quiet; then
             git commit -m "chore: refresh real profile artwork [skip ci]"
-            git push
           fi
+          python scripts/pin_readme_art.py
+          git add README.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: pin fresh contribution images [skip ci]"
+          fi
+          git push
