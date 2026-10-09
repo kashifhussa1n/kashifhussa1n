@@ -48,7 +48,7 @@ def overview(d):
                 txt(25,361,'Automation, APIs and programming fundamentals.',12,MUTED),
                 txt(460,361,'Video editing and visual storytelling.',12,MUTED)])
     chips(out,25,381,['Python','Java','HTML'])
-    chips(out,305,381,['Motion graphics','Video editing'])
+    chips(out,460,381,['Motion graphics','Video editing'])
     out.extend([txt(25,438,'EXPLORING',10,GREEN,600,'letter-spacing="1"'),txt(25,463,'AI / ML · building through practice',13,MUTED),
                 txt(460,438,'CREATING',10,GREEN,600,'letter-spacing="1"'),txt(460,463,'Long-form videos · short-form edits',13,MUTED),'</svg>'])
     return '\n'.join(out)
