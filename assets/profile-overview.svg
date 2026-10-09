@@ -421,10 +421,10 @@
 <text x="108.6" y="398" font-size="12" fill="#9bd4aa" font-weight="400" >Java</text>
 <rect x="155.0" y="381" width="50.4" height="26" rx="13" fill="#17231e" stroke="#294133"/>
 <text x="167.0" y="398" font-size="12" fill="#9bd4aa" font-weight="400" >HTML</text>
-<rect x="305" y="381" width="123.0" height="26" rx="13" fill="#17231e" stroke="#294133"/>
-<text x="317" y="398" font-size="12" fill="#9bd4aa" font-weight="400" >Motion graphics</text>
-<rect x="436.0" y="381" width="109.8" height="26" rx="13" fill="#17231e" stroke="#294133"/>
-<text x="448.0" y="398" font-size="12" fill="#9bd4aa" font-weight="400" >Video editing</text>
+<rect x="460" y="381" width="123.0" height="26" rx="13" fill="#17231e" stroke="#294133"/>
+<text x="472" y="398" font-size="12" fill="#9bd4aa" font-weight="400" >Motion graphics</text>
+<rect x="591.0" y="381" width="109.8" height="26" rx="13" fill="#17231e" stroke="#294133"/>
+<text x="603.0" y="398" font-size="12" fill="#9bd4aa" font-weight="400" >Video editing</text>
 <text x="25" y="438" font-size="10" fill="#9bd4aa" font-weight="600" letter-spacing="1">EXPLORING</text>
 <text x="25" y="463" font-size="13" fill="#8b949e" font-weight="400" >AI / ML · building through practice</text>
 <text x="460" y="438" font-size="10" fill="#9bd4aa" font-weight="600" letter-spacing="1">CREATING</text>
